@@ -1,23 +1,168 @@
-# sopa-de-letras-
+# Sopa-de-letras
  ## GRUPO LOS ABBES
- ## proyecto_sopa de letras en python
- en este repositorio se encuentra el paso a paso utiizado para creaer una sopa e letras en python ddonde el usuario puede acomodar la sopa dde leras a su gusto, el usuario puede controlar el numero de columnas y filas de la sopa de letras ademas de escoger entre generar la sopa de letras con palabras de la base de datos o usar palabras ingresadas por el
-  ## primer paso
-   el primer paso fue crear la lista de palabras que iban a estar por efecto en la sopa de letras 
-## segundo paso
-despues de crear la lista de palbras se procedio a crear el codigo en python como se muestra a continuacion
-![imagen1](https://github.com/JuanBarreraz/sopa-de-letras-/assets/141855949/0b9dacf3-f3c0-461f-a541-b13f4d021b25)
-![imagen2](https://github.com/JuanBarreraz/sopa-de-letras-/assets/141855949/b8c31ba1-3786-4d15-9788-683ca2dd3db3)
-en estas imagenes se muestra como se crea el codigo para generar las filas y columnas en base a las palbras, para ello se utilizan strigs y listas vacias para generar las filas y columnas
+ ## Proyecto_sopa de letras en python
+ En este repositorio se encuentra el paso a paso utilizado para crear una sopa de letras en Python, donde el usuario puede acomodar la sopa de letras a su gusto. El usuario puede controlar el número de columnas y filas de la sopa de letras, además de escoger entre generar la sopa de letras con palabras de la base de datos o usar palabras ingresadas por él.
+ - ## Primer paso
+   El primer paso fue importar 2 librerías que nos ayudarían al desarrollo de la sopa de letras más adelante y crear la lista de palabras que iban a estar por defecto en la sopa de letras. 
+```python
+import random
+import string
 
- ## tercer paso
- en esta parte se crea el codigo en el cual e usuario puede introducir las palabras que desee a la sopa de letras 
- ![image](https://github.com/JuanBarreraz/sopa-de-letras-/assets/141855949/a6e91469-f89b-4126-b88e-cd7dac040b97)
- 
-  ## quinto paso
-   ya en este punto se utilizo un codigo que organice las palbras en vertical y/o horizontal y que a su vez genere letras al azar para rellenar la sopa de letras
-   
-![image](https://github.com/JuanBarreraz/sopa-de-letras-/assets/141855949/36d6d96b-8b60-4834-8aa6-242c0196088c)
- ## sexto paso
- ya por ultimo se creo la parte del codigo que genere la sopa de letras por fila y columna 
- ![image](https://github.com/JuanBarreraz/sopa-de-letras-/assets/141855949/0d5db046-9b7a-4c36-8361-95a4d5ffcf12)
+# Lista de palabras que se usan automático
+auto = ["Humano", "persona", "gente", "hombre", "mujer", "bebé", "niño", "niña", "don", "doña", 
+    "señor", "señora", "dama", "individuo", "salud", "cuerpo", "pierna", "pie", "talón", 
+    "cabeza", "cara", "boca", "labio", "diente", "ojo", "nariz", "barba", "cuello", 
+    "amor", "padre", "madre", "hijo", "hija", "abuelo", "abuela", "nieto", "nieta", 
+    "tío", "tía", "ser", "vida", "muerte", "campo", "bosque", "selva", "desierto", 
+    "costa", "playa", "río", "lago", "mar", "océano", "cerro", "monte", "luz", "animal", 
+    "perro", "gato", "vaca", "cerdo", "caballo", "yegua", "oveja", "mono", "ratón", 
+    "rata", "tigre", "conejo", "dragón", "ciervo", "rana", "león", "pájaro", "pez", 
+    "calamar", "pulpo", "bicho", "mosca", "mosquito", "cucaracha", "caracol", 
+    "lombriz", "lagarto", "serpiente", "alimento", "comida", "bebida", "vegetal", 
+    "planta", "pasto", "flor", "fruta", "semilla", "árbol", "hoja", "raíz", "hongo", 
+    "ciruela", "pino", "nuez", "arroz", "avena", "verdura", "tiempo", "clima", 
+    "cielo", "este", "oeste", "sur", "norte", "ayer", "hoy", "día", "mes", "año", 
+    "siglo", "calor", "agua", "hielo", "fuego", "aire", "tierra", "metal", "sal", 
+    "barro", "lodo", "peso", "metro", "gramo", "kilo", "medida", "sociedad", 
+    "equipo", "país", "gobierno", "estado", "campaña", "club", "congreso", 
+    "consejo", "partido", "obligación", "derecho", "permiso", "prohibición", 
+    "ley", "economía", "consumo", "empresa", "hotel", "cuenta", "dinero", 
+    "billete", "cambio", "máquina", "precio", "valor", "hogar", "silla", 
+    "mesa", "cama", "panel", "puerta", "ropa", "manga", "cuello", "zapato", 
+    "gafas", "voz", "texto", "color", "blanco", "negro", "campo", "ronda", "campo", "veloz", "flor", "abeja", "huerto", "azul", "gota", "fuego", 
+    "ágil", "viento", "línea", "calle", "vela", "cinta", "mar", "azúcar", "arte", "papel", 
+    "llama", "fruta", "melón", "silla", "mesa", "traje", "gota", "parque", "risa", "risueño", 
+    "grano", "llave", "botón", "gente", "piedra", "risa", "paz", "arte", "mano", "forma", 
+    "tubo", "tela", "lienzo", "verde", "playa", "arena", "piedra", "llama", "mundo", "veloz", 
+    "aire", "onda", "rana", "grano", "blusa", "gota", "taza", "carro", "azúcar", "nuez", 
+    "niño", "coral", "gota", "raya", "sonrisa", "risa", "luz", "rayo", "bruma", "limón", 
+    "rama", "vino", "grano", "golpe", "gota", "onda", "onda", "orilla", "campo", "rayo", 
+    "grano", "gafas", "pista", "rata", "puma", "rama", "hilo", "miel", "luz", "lupa", 
+    "río", "duna", "luz", "duna", "dibujo", "anillo", "onda", "globo", "balsa", "ruta", 
+    "pulso", "rosa", "buena", "cama", "silla", "coral", "pestaña", "musgo", "luz", "mago"
+]
+```
+- ## Segundo paso
+  Después de crear la lista de palabras, se procedió a crear el código en Python, como se muestra a continuación.
+```python
+# Se permite elegir el modo de armar la sopa de letras
+print("\n\nHola, bienvenido a este programa generador de sopas de letras hecho en Python; a continuación podrá elegir la sopa de letras que más se ajusta a sus necesidades:")
+z = int(input("\nElija cómo desea hacer su sopa de letras: \n 1 - Usted inserta las palabras que desea sean incluídas. \n 2 - Las palabras son elegidas por el programa. \n Escriba el número de la opción que le guste: "))
+
+def check_overlap(word, sopa, fila, col, direccion):
+    # Verifica si la palabra puede colocarse en la sopa sin sobreponerse.
+    for i in range(len(word)):
+        if direccion == 'horizontal' and sopa[fila][col + i] != ' ' and sopa[fila][col + i] != word[i]:
+            return False
+        elif direccion == 'vertical' and sopa[fila + i][col] != ' ' and sopa[fila + i][col] != word[i]:
+            return False
+    return True
+
+a = False
+b = 0
+c = False
+blabla = []
+find = []
+```
+
+Primero, se creó la opción para el usuario sobre cómo crear su sopa de letras, ya sea tomando palabras aleatorias o seleccionándolas de la lista preexistente en el programa. Seguido, creamos la función que permite que las palabras ingresadas se puedan colocar en la sopa de letras sin superponerse sobre otras. Después, se generan las filas y columnas en base a las palabras. Para ello, se utilizan strings y listas vacías para generar las filas y columnas.
+
+- ## Tercer paso
+  En esta parte, se crea el código en el cual el usuario puede elegir el tamaño de la sopa de letras, limitado por un mínimo de 10x10 y un máximo de 30x30.
+```python
+# Se permite al usuario elegir el tamaño de la sopa de letras
+size = int(input("Elija el tamaño de su sopa de letras (Ej: si ingresa el número 15, se creará una sopa de letras de 15 filas y 15 columnas)\nTenga en cuenta que el mínimo es de 10 y el máximo es 30. Valor: "))
+while a == False:
+    if size < 10:
+        size = int(input("Recuerde que el mínimo es de 10, vuelva a intentarlo. \tValor: "))
+    elif size > 30:
+        size = int(input("Recuerde que el máximo es de 30, vuelva a intentarlo. \tValor: "))
+    else:
+        a = True
+
+# Se introducen las palabras que serán utilizadas en la sopa de letras
+cantidad = int(input("¿Cuántas palabras desea ingresar en su sopa de letras?: "))
+if z==1:    
+    while b < cantidad:
+        c = input('Inserte una palabra que quiere incluir sin tildes; tenga en cuenta el límite ingresado. Palabra: ')
+        find.append(c)
+        words = list(c.upper())
+        if len(words) <= size:
+            blabla.append(words)
+            b = b + 1
+        else:
+            print("La palabra es demasiado larga para acomodar en la sopa de letras.")
+elif z==2:
+    while b < cantidad:
+        c = random.choice(auto)
+        find.append(c)
+        words = list(c.upper())
+        blabla.append(words)
+        b = b + 1
+letras = string.ascii_uppercase  # Obtiene todas las letras mayúsculas del alfabeto
+sopa = [[' ' for _ in range(size)] for _ in range(size)]
+```
+Por otra parte, creamos con condicionales la opción para que el usuario pueda poner las palabras que quiere en la sopa de letras o, por el contrario, tomarlas de la lista que ya proporcionamos aleatoriamente. Hacemos que todas las letras de las palabras ingresadas aparezcan en mayúscula.
+ ```python
+# Se introducen las palabras que serán utilizadas en la sopa de letras
+cantidad = int(input("¿Cuántas palabras desea ingresar en su sopa de letras?: "))
+if z==1:    
+    while b < cantidad:
+        c = input('Inserte una palabra que quiere incluir sin tildes; tenga en cuenta el límite ingresado. Palabra: ')
+        find.append(c)
+        words = list(c.upper())
+        if len(words) <= size:
+            blabla.append(words)
+            b = b + 1
+        else:
+            print("La palabra es demasiado larga para acomodar en la sopa de letras.")
+elif z==2:
+    while b < cantidad:
+        c = random.choice(auto)
+        find.append(c)
+        words = list(c.upper())
+        blabla.append(words)
+        b = b + 1
+letras = string.ascii_uppercase  # Obtiene todas las letras mayúsculas del alfabeto
+sopa = [[' ' for _ in range(size)] for _ in range(size)]
+``` 
+ - ## Cuarto paso
+   Ya en este punto, se utilizó un código que organiza las palabras tanto en vertical como en horizontal, y al mismo tiempo, genera letras al azar para rellenar la sopa de letras.
+  ``` python
+   # Colocar palabras horizontal y verticalmente sin sobreponerse
+for palabra in blabla:
+    direccion = random.choice(['horizontal', 'vertical'])
+    c = False  # Reiniciar c a False antes de intentar colocar cada palabra
+    if direccion == 'horizontal':
+        while c == False:
+            fila = random.randint(0, size - 1)
+            col = random.randint(0, size - len(palabra))
+            if check_overlap(palabra, sopa, fila, col, direccion):
+                for i in range(len(palabra)):
+                    sopa[fila][col + i] = palabra[i]
+                c = True
+    else:
+        while c == False:
+            fila = random.randint(0, size - len(palabra))
+            col = random.randint(0, size - 1)
+            if check_overlap(palabra, sopa, fila, col, direccion):
+                for i in range(len(palabra)):
+                    sopa[fila + i][col] = palabra[i]
+                c = True
+
+# Rellenar el resto de la sopa con letras aleatorias
+for fila in range(size):
+    for col in range(size):
+        if sopa[fila][col] == ' ':
+            sopa[fila][col] = random.choice(letras)
+``` 
+ ## Quinto paso
+ Por último, hacemos que la sopa de letras se genere en la terminal por fila y columna.
+   ```python
+# Mostrar la sopa de letras
+print("\nSopa de letras:")
+for fila in sopa:
+    print(' '.join(fila))
+print('Las palabras a buscar son:')
+print(find)
+```
