@@ -156,13 +156,47 @@ for fila in range(size):
         if sopa[fila][col] == ' ':
             sopa[fila][col] = random.choice(letras)
 ``` 
- ## Quinto paso
- Por último, hacemos que la sopa de letras se genere en la terminal por fila y columna.
-   ```python
+- ## Quinto paso
+  Por último, hacemos que la sopa de letras se genere en la terminal por fila y columna.
+```python
 # Mostrar la sopa de letras
 print("\nSopa de letras:")
 for fila in sopa:
     print(' '.join(fila))
 print('Las palabras a buscar son:')
 print(find)
+```
+- ## Sexto paso
+ En este punto, debemos crear cómo interactuar con nuestra sopa de letras. Así que se inicia un bucle mientras 'j' sea igual a 'incomplete'. Este bucle permite al usuario intentar encontrar palabras hasta que todas las palabras hayan sido encontradas. El usuario ingresa las coordenadas (fila y columna) donde cree que se encuentra una palabra.
+```python
+  #Comprueba si hay o no una palabra
+j = 'incomplete'
+while j == 'incomplete':
+    n='nada'
+    h=0
+    ox = int(input("Inserte la columna en la que cree hay una palabra (Empezando desde 0): "))
+    oy = int(input("Inserte la fila en la que cree hay una palabra (Empezando desde 0): "))
+    o= [oy, ox]
+```
+- Seguido de esto, se utiliza un bucle para comparar la posición ingresada por el usuario con las posiciones donde se encuentran las palabras en la sopa. Si la posición coincide con una de las posiciones de palabras, se elimina esa posición de la lista 'posiciones' y se imprime un mensaje. Si no hay coincidencias, se establece 'n' en 'nada'. Además, se imprime un mensaje si la posición ingresada es incorrecta. También se muestra la longitud actual de la lista 'posiciones'.
+```python
+    while h<len(posiciones):
+        if o == posiciones[h]:
+            del posiciones[h]
+            print('Corecto, en esa posición había una palabra, encuentra las otras')
+            n='found'
+        else: n='nada'
+        h=h+1
+    if n=='nada':
+        print('La posición es incorrecta, intente otra vez')
+    print(len(posiciones))
+```
+- ## Septimo paso
+  Ya para finalizar, verificamos si la lista de posiciones está vacía. Esto significa que todas las palabras han sido encontradas y se establece 'j' en 'complete', lo que finaliza el bucle principal. Luego, se imprime un mensaje de felicitación cuando el usuario ha encontrado todas las palabras.
+```python
+  if len(posiciones)<=0:
+        j = 'complete'
+
+if j == 'complete':
+    print('Felicitaciones, ha acabado la sopa de letras')
 ```
