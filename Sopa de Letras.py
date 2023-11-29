@@ -37,7 +37,7 @@ auto = ["Humano", "persona", "gente", "hombre", "mujer", "bebé", "niño", "niñ
 # Se permite elegir el modo de armar la sopa de letras
 print("\n\nHola, bienvenido a este programa generador de sopas de letras hecho en Python; a continuación podrá elegir la sopa de letras que más se ajusta a sus necesidades:")
 z = int(input("\nElija cómo desea hacer su sopa de letras: \n 1 - Usted inserta las palabras que desea sean incluídas. \n 2 - Las palabras son elegidas por el programa. \n Escriba el número de la opción que le guste: "))
-
+posiciones=[]
 def check_overlap(word, sopa, fila, col, direccion):
     # Verifica si la palabra puede colocarse en la sopa sin sobreponerse.
     for i in range(len(word)):
@@ -97,6 +97,7 @@ for palabra in blabla:
                 for i in range(len(palabra)):
                     sopa[fila][col + i] = palabra[i]
                 c = True
+                posiciones.append([fila, col])
     else:
         while c == False:
             fila = random.randint(0, size - len(palabra))
@@ -105,6 +106,7 @@ for palabra in blabla:
                 for i in range(len(palabra)):
                     sopa[fila + i][col] = palabra[i]
                 c = True
+                posiciones.append([fila, col])
 
 # Rellenar el resto de la sopa con letras aleatorias
 for fila in range(size):
@@ -118,3 +120,27 @@ for fila in sopa:
     print(' '.join(fila))
 print('Las palabras a buscar son:')
 print(find)
+
+#Comprueba si hay o no una palabra
+j = 'incomplete'
+while j == 'incomplete':
+    n='nada'
+    h=0
+    ox = int(input("Inserte la columna en la que cree hay una palabra (Empezando desde 0): "))
+    oy = int(input("Inserte la fila en la que cree hay una palabra (Empezando desde 0): "))
+    o= [oy, ox]
+    while h<len(posiciones):
+        if o == posiciones[h]:
+            del posiciones[h]
+            print('Corecto, en esa posición había una palabra, encuentra las otras')
+            n='found'
+        else: n='nada'
+        h=h+1
+    if n=='nada':
+        print('La posición es incorrecta, intente otra vez')
+    print(len(posiciones))
+    if len(posiciones)<=0:
+        j = 'complete'
+
+if j == 'complete':
+    print('Felicitaciones, ha acabado la sopa de letras')
